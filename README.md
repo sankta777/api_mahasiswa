@@ -1,117 +1,128 @@
-# REST API Manajemen Data Mahasiswa
+# Proyek UAS: REST API Data Mahasiswa
 
-Proyek ini adalah sebuah REST API sederhana yang dibuat untuk memenuhi tugas Ujian Akhir Semester (UAS). API ini berfungsi untuk mengelola data mahasiswa (CRUD) dan dilengkapi dengan sistem otentikasi berbasis token.
+Ini adalah proyek API sederhana yang kami buat dan berikut adalah anggotanya:
+Revaldo Santosa (230040023)
+Made Nico Bramantya Putra Wijaya (230040094)
+Ida Bagus Gede Upadana Manuaba (230040121)
+Ida Bagus Putu Gede Rama Pradnyana (230040175)
 
-## Fitur Utama
--   Otentikasi Pengguna (Login & Cek User) menggunakan Token.
--   CRUD (Create, Read, Update, Delete) untuk data mahasiswa.
--   Akun `superadmin` otomatis tersedia setelah proses migrasi database.
--   Dibangun menggunakan PHP dengan framework Laravel.
+Tujuan utama API ini adalah untuk menyediakan layanan backend yang bisa melakukan operasi data mahasiswa (tambah, lihat, edit, hapus) dan sudah diamankan pakai sistem otentikasi token (JWT/Sanctum).
 
-## Prasyarat
--   PHP (rekomendasi versi 8.1+)
+## Fitur-fiturnya:
+
+-   ✅ Otentikasi user pakai token. Login dulu baru bisa akses data.
+-   ✅ CRUD (Create, Read, Update, Delete) lengkap untuk data mahasiswa.
+-   ✅ Ada akun `superadmin` yang langsung jadi pas database di-import.
+-   ✅ Dibuat pakai PHP & Laravel.
+
+## Yang Dibutuhin Biar Jalan:
+
+-   PHP (v8.1+)
 -   Composer
--   MySQL / MariaDB
--   Laragon (rekomendasi untuk lingkungan lokal di Windows)
--   Postman (untuk melakukan tes pada endpoint API)
+-   MySQL atau MariaDB
+-   Postman (Buat ngetes endpoint)
+-   Laragon (Rekomendasi buat yang pakai Windows, biar gampang)
 
-## Panduan Instalasi & Setup
+## Cara Setup & Jalanin Proyek
 
-1.  **Clone Repository**
-    Buka terminal dan jalankan perintah berikut:
+1.  **Clone Dulu Repo Ini**
+    Buka terminal, terus jalanin ini:
+
     ```bash
-    git clone [URL_REPOSITORY_GIT_ANDA]
+    git clone [URL_REPOSITORY_GIT_KAMU]
     cd nama-folder-proyek
     ```
 
-2.  **Install Dependencies**
-    Jalankan perintah Composer untuk menginstall semua library yang dibutuhkan.
+2.  **Install Library-nya**
+    Masih di terminal, ketik perintah ini buat download semua kebutuhan Laravel-nya.
+
     ```bash
     composer install
     ```
 
-3.  **Setup Database**
-    * Buat sebuah database baru di MySQL (misalnya via phpMyAdmin) dengan nama `api_mahasiswa`.
-    * Import file `database.sql` yang ada di dalam repository ini ke dalam database yang baru saja dibuat.
+3.  **Siapin Database**
 
-4.  **Konfigurasi Lingkungan (.env)**
-    * Salin file `.env.example` menjadi file baru bernama `.env`.
+    -   Buka phpMyAdmin, buat database baru. Kasih nama `api_mahasiswa`.
+    -   Abis itu, import file `database.sql` dari repo ini ke database `api_mahasiswa` yang baru dibuat.
+
+4.  **Konfigurasi `.env`**
+
+    -   Copy file `.env.example` jadi `.env`.
         ```bash
         cp .env.example .env
         ```
-    * Buka file `.env` dan sesuaikan konfigurasi database (`DB_`) dengan pengaturan MySQL Anda.
+    -   Buka file `.env` yang baru, terus pastiin settingan database-nya udah bener (kalau pakai Laragon, biasanya default-nya gini):
         ```
-        DB_CONNECTION=mysql
-        DB_HOST=127.0.0.1
-        DB_PORT=3306
         DB_DATABASE=api_mahasiswa
         DB_USERNAME=root
         DB_PASSWORD=
         ```
-    * Generate kunci aplikasi Laravel.
+    -   Terakhir, generate application key-nya.
         ```bash
         php artisan key:generate
         ```
 
-5.  **Jalankan Server API**
-    Gunakan server pengembangan bawaan Laravel.
+5.  **Nyalain Servernya!**
+    Udah deh, tinggal jalanin server bawaan Laravel.
     ```bash
     php artisan serve
     ```
-    Server akan berjalan di `http://127.0.0.1:8000`.
+    Nanti API-nya bakal aktif di `http://127.0.0.1:8000`.
 
-## Dokumentasi Endpoint API
+## Daftar Endpoint API-nya
 
-**Base URL**: `http://127.0.0.1:8000/api`
+**URL Dasar**: `http://127.0.0.1:8000/api`
 
 ---
 
 ### Otentikasi
 
-#### 1. Login Pengguna
+#### 1. Login
+
 -   **Method**: `POST`
 -   **Endpoint**: `/auth/login`
 -   **Body** (`form-data`):
     -   `email`: `admin@example.com`
     -   `password`: `password`
--   **Response Sukses**: Mengembalikan `access_token` yang akan digunakan untuk request selanjutnya.
+-   **Hasil**: Kalau sukses, bakal dapat `access_token` buat dipakai di request lain.
 
-#### 2. Cek Pengguna Saat Ini
+#### 2. Cek Info User
+
 -   **Method**: `GET`
 -   **Endpoint**: `/auth/me`
--   **Authorization**: `Bearer Token` diperlukan.
+-   **Auth**: Wajib pakai `Bearer Token`.
 
 ---
 
 ### Mahasiswa (Students)
-*Semua endpoint di bawah ini memerlukan `Bearer Token` pada header `Authorization`.*
 
-#### 1. Melihat Semua Mahasiswa
+_Semua endpoint di bawah ini wajib pakai `Bearer Token` di header Authorization._
+
+#### 1. Lihat Semua Mahasiswa
+
 -   **Method**: `GET`
 -   **Endpoint**: `/students`
 
-#### 2. Menambah Mahasiswa Baru
+#### 2. Tambah Mahasiswa
+
 -   **Method**: `POST`
 -   **Endpoint**: `/students`
--   **Body** (`form-data`):
-    -   `nim` (string, unique)
-    -   `nama` (string)
-    -   `jurusan` (string)
+-   **Body** (`form-data`): `nim`, `nama`, `jurusan`
 
-#### 3. Melihat Detail Mahasiswa
+#### 3. Lihat Detail Mahasiswa
+
 -   **Method**: `GET`
 -   **Endpoint**: `/students/{id}`
 
-#### 4. Meng-edit Mahasiswa
+#### 4. Edit Mahasiswa
+
 -   **Method**: `PUT`
 -   **Endpoint**: `/students/{id}`
--   **Body** (`x-www-form-urlencoded` atau `form-data`):
-    -   `nim` (string, unique)
-    -   `nama` (string)
-    -   `jurusan` (string)
--   **Catatan Postman**: Untuk testing via Postman, gunakan Method `POST` dan tambahkan field `_method` dengan value `PUT` di dalam Body.
+-   **Body**: `nim`, `nama`, `jurusan`
+-   **Catatan Penting**: Kalau ngetes pakai Postman, pakai Method `POST` ke URL ini, terus di Body tambahin field `_method` dengan value `PUT`. Ini trik khusus buat Laravel.
 
-#### 5. Menghapus Mahasiswa
+#### 5. Hapus Mahasiswa
+
 -   **Method**: `DELETE`
 -   **Endpoint**: `/students/{id}`
--   **Catatan Postman**: Untuk testing via Postman, gunakan Method `POST` dan tambahkan field `_method` dengan value `DELETE` di dalam Body.
+-   **Catatan Penting**: Sama kayak edit, kalau ngetes pakai Postman, pakai Method `POST` ke URL ini dan tambahin field `_method` dengan value `DELETE` di Body.
