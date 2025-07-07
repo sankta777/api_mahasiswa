@@ -1,84 +1,115 @@
-Project UAS Back-end Web Dev: REST API Data Mahasiswa
-Ini adalah project API sederhana yang kami buat dan berikut adalah anggotanya: 
-Revaldo Santosa (230040023) 
-Made Nico Bramantya Putra Wijaya (230040094) 
-Ida Bagus Gede Upadana Manuaba (230040121) 
-Ida Bagus Putu Gede Rama Pradnyana (230040175)
+# 📚 REST API Data Mahasiswa - UAS Back-end Web Development
 
-Tujuan utama API ini adalah untuk menyediakan layanan back-end yang bisa melakukan operasi data mahasiswa (tambah, lihat, edit, hapus) dan sudah diamankan pakai sistem autentikasi token (JWT/Sanctum).
+Project ini merupakan RESTful API sederhana yang dibuat untuk memenuhi tugas UAS mata kuliah Back-end Web Development.
 
-Fitur-fiturnya:
-✅ Otentikasi user pakai token. Login dulu baru bisa akses data.
-✅ CRUD (Create, Read, Update, Delete) lengkap untuk data mahasiswa.
-✅ Ada akun superadmin yang langsung jadi pas database di-import.
-✅ Dibuat pakai PHP & Laravel.
-Yang Dibutuhin Biar Jalan:
-PHP (v8.1+)
-Composer
-MySQL atau MariaDB
-Postman (Buat ngetes endpoint)
-Laragon (Rekomendasi buat yang pakai Windows, biar gampang)
-Cara Setup & Jalanin Proyek
-Clone Dulu Repo Ini Buka terminal, terus jalanin ini:
-git clone https://github.com/sankta777/api_mahasiswa.git 
-cd api_mahasiswa 
+## 🔗 Daftar Isi
+- [Anggota Kelompok](#anggota-kelompok)
+- [Tujuan Project](#tujuan-project)
+- [Fitur-Fitur](#fitur-fitur)
+- [Kebutuhan Sistem](#kebutuhan-sistem)
+- [Cara Setup Project](#cara-setup-project)
+- [Daftar Endpoint API](#daftar-endpoint-api)
+- [Kontak](#kontak)
 
-Install Library-nya Masih di terminal, ketik perintah ini buat download semua kebutuhan Laravel-nya.
+## 👥 Anggota Kelompok
+- Revaldo Santosa (230040023)  
+- Made Nico Bramantya Putra Wijaya (230040094)  
+- Ida Bagus Gede Upadana Manuaba (230040121)  
+- Ida Bagus Putu Gede Rama Pradnyana (230040175)
 
+## 🎯 Tujuan Project
+
+Menyediakan layanan **back-end** untuk mengelola data mahasiswa yang mendukung fitur:
+
+- Autentikasi dengan token (JWT/Sanctum)
+- Operasi data mahasiswa (Tambah, Lihat, Edit, Hapus)
+
+## 🚀 Fitur-Fitur
+✅ Autentikasi user menggunakan token  
+✅ CRUD lengkap untuk data mahasiswa  
+✅ Akun superadmin otomatis tersedia saat database di-import  
+✅ Dibuat dengan **PHP** & **Laravel**
+
+## 🛠️ Kebutuhan Sistem
+
+- PHP (v8.1+)
+- Composer
+- MySQL atau MariaDB
+- [Postman](https://www.postman.com/) (untuk testing endpoint)
+- [Laragon](https://laragon.org/) (rekomendasi untuk pengguna Windows)
+
+## ⚙️ Cara Setup Project
+
+### 1. Clone Repositori
+```bash
+git clone https://github.com/sankta777/api_mahasiswa.git
+cd api_mahasiswa
+```
+
+### 2. Install Dependensi Laravel
+```bash
 composer install
-Siapin Database
+```
 
-Buka phpMyAdmin, buat database baru. Kasih nama api_mahasiswa.
-Abis itu, import file database.sql dari repo ini ke database api_mahasiswa yang baru dibuat.
-Konfigurasi .env
+### 3. Siapkan Database
+- Buat database baru dengan nama `api_mahasiswa` di phpMyAdmin.
+- Import file `database.sql` dari repositori ke database tersebut.
 
-Copy file .env.example jadi .env.
+### 4. Konfigurasi .env
+```bash
 cp .env.example .env
-Buka file .env yang baru, terus pastiin settingan database-nya udah bener (kalau pakai Laragon, biasanya default-nya gini):
+```
+Edit file `.env`:
+```
 DB_DATABASE=api_mahasiswa
 DB_USERNAME=root
 DB_PASSWORD=
-Terakhir, generate application key-nya.
+```
+
+### 5. Generate Application Key
+```bash
 php artisan key:generate
-Nyalain Servernya! Udah deh, tinggal jalanin server bawaan Laravel.
+```
 
+### 6. Jalankan Server Laravel
+```bash
 php artisan serve
-Nanti API-nya bakal aktif di http://127.0.0.1:8000.
+```
+> Akses API: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-Daftar Endpoint API-nya
-URL Dasar: http://127.0.0.1:8000/api
+## 🔐 Daftar Endpoint API
 
-Otentikasi
-1. Login
-Method: POST
-Endpoint: /auth/login
-Body (form-data):
-email: admin@example.com
-password: password
-Hasil: Kalau sukses, bakal dapat access_token buat dipakai di request lain.
-2. Cek Info User
-Method: GET
-Endpoint: /auth/me
-Auth: Wajib pakai Bearer Token.
-Mahasiswa (Students)
-Semua endpoint di bawah ini wajib pakai Bearer Token di header Authorization.
+### URL Dasar
+```
+http://127.0.0.1:8000/api
+```
 
-1. Lihat Semua Mahasiswa
-Method: GET
-Endpoint: /students
-2. Tambah Mahasiswa
-Method: POST
-Endpoint: /students
-Body (form-data): nim, nama, jurusan
-3. Lihat Detail Mahasiswa
-Method: GET
-Endpoint: /students/{id}
-4. Edit Mahasiswa
-Method: PUT
-Endpoint: /students/{id}
-Body: nim, nama, jurusan
-Catatan Penting: Kalau ngetes pakai Postman, pakai Method POST ke URL ini, terus di Body tambahin field _method dengan value PUT. Ini trik khusus buat Laravel.
-5. Hapus Mahasiswa
-Method: DELETE
-Endpoint: /students/{id}
-Catatan Penting: Sama kayak edit, kalau ngetes pakai Postman, pakai Method POST ke URL ini dan tambahin field _method dengan value DELETE di Body.
+### Autentikasi
+#### 1. Login
+- **Method:** `POST`
+- **Endpoint:** `/auth/login`
+- **Body (form-data):** `email`, `password`
+- **Contoh:** `admin@example.com / password`
+
+#### 2. Cek Info User
+- **Method:** `GET`
+- **Endpoint:** `/auth/me`
+- **Auth:** Wajib pakai Bearer Token
+
+### Mahasiswa (Students)
+> Semua endpoint berikut memerlukan Bearer Token
+
+#### 1. Lihat Semua Mahasiswa
+- `GET /students`
+
+#### 2. Tambah Mahasiswa
+- `POST /students` (form-data: `nim`, `nama`, `jurusan`)
+
+#### 3. Lihat Detail Mahasiswa
+- `GET /students/{id}`
+
+#### 4. Edit Mahasiswa
+- `PUT /students/{id}` (gunakan POST + `_method=PUT` saat pakai Postman)
+
+#### 5. Hapus Mahasiswa
+- `DELETE /students/{id}` (gunakan POST + `_method=DELETE` saat pakai Postman)
