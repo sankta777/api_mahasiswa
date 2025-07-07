@@ -4,12 +4,12 @@ Project ini merupakan RESTful API sederhana yang dibuat untuk memenuhi tugas UAS
 
 ## 🔗 Daftar Isi
 
--   [Anggota Kelompok](#-anggota-kelompok)
--   [Tujuan Project](#-tujuan-project)
--   [Fitur-Fitur](#-fitur-fitur)
--   [Kebutuhan Sistem](#-kebutuhan-sistem)
--   [Cara Setup Project](#-cara-setup-project)
--   [Daftar Endpoint API](#-daftar-endpoint-api)
+-   [Anggota Kelompok](-#anggota-kelompok)
+-   [Tujuan Project](-#tujuan-project)
+-   [Fitur-Fitur](-#fitur-fitur)
+-   [Kebutuhan Sistem](-#kebutuhan-sistem)
+-   [Cara Setup Project](-#cara-setup-project)
+-   [Daftar Endpoint API](-#daftar-endpoint-api)
 
 ## 👥 Anggota Kelompok
 
@@ -23,7 +23,7 @@ Project ini merupakan RESTful API sederhana yang dibuat untuk memenuhi tugas UAS
 Menyediakan layanan **back-end** untuk mengelola data mahasiswa yang mendukung fitur:
 
 -   Autentikasi dengan token (JWT/Sanctum)
--   Operasi data mahasiswa (Tambah, Lihat, Edit, Hapus)
+-   Operasi data mahasiswa (Create, Read, Update, Delete)
 
 ## 🚀 Fitur-Fitur
 
@@ -38,7 +38,7 @@ Menyediakan layanan **back-end** untuk mengelola data mahasiswa yang mendukung f
 -   Composer
 -   MySQL atau MariaDB
 -   [Postman](https://www.postman.com/) (untuk testing endpoint)
--   [Laragon](https://laragon.org/) (rekomendasi untuk pengguna Windows)
+-   [Laragon](https://laragon.org/) (rekomendasi)
 
 ## ⚙️ Cara Setup Project
 
@@ -46,21 +46,26 @@ Menyediakan layanan **back-end** untuk mengelola data mahasiswa yang mendukung f
 
 ```bash
 git clone https://github.com/sankta777/api_mahasiswa.git
+```
+
+### 2. Masuk ke Folder (change directory)
+
+```bash
 cd api_mahasiswa
 ```
 
-### 2. Install Dependensi Laravel
+### 3. Install Library Laravel
 
 ```bash
 composer install
 ```
 
-### 3. Siapkan Database
+### 4. Siapkan Database
 
 -   Buat database baru dengan nama `api_mahasiswa` di phpMyAdmin.
 -   Import file `database.sql` dari repositori ke database tersebut.
 
-### 4. Konfigurasi .env
+### 5. Konfigurasi .env
 
 ```bash
 cp .env.example .env
@@ -74,13 +79,13 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### 5. Generate Application Key
+### 6. Generate Application Key
 
 ```bash
 php artisan key:generate
 ```
 
-### 6. Jalankan Server Laravel
+### 7. Jalankan Server Laravel
 
 ```bash
 php artisan serve
