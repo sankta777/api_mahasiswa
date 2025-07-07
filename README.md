@@ -9,7 +9,6 @@ Project ini merupakan RESTful API sederhana yang dibuat untuk memenuhi tugas UAS
 - [Kebutuhan Sistem](#kebutuhan-sistem)
 - [Cara Setup Project](#cara-setup-project)
 - [Daftar Endpoint API](#daftar-endpoint-api)
-- [Kontak](#kontak)
 
 ## 👥 Anggota Kelompok
 - Revaldo Santosa (230040023)  
