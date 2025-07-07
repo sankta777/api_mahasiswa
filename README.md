@@ -98,46 +98,8 @@ http://127.0.0.1:8000/api
 
 ### Autentikasi
 
-### Autentikasi
-
 #### 1. Login
 
-<<<<<<< HEAD
-
--   **Method:** `POST`
--   **Endpoint:** `/auth/login`
--   **Body (form-data):** `email`, `password`
--   **Contoh:** `admin@example.com / password`
-
-#### 2. Cek Info User
-
--   **Method:** `GET`
--   **Endpoint:** `/auth/me`
--   **Auth:** Wajib pakai Bearer Token
-
-### Mahasiswa (Students)
-
-> Semua endpoint berikut memerlukan Bearer Token
-
-#### 1. Lihat Semua Mahasiswa
-
--   `GET /students`
-
-#### 2. Tambah Mahasiswa
-
--   `POST /students` (form-data: `nim`, `nama`, `jurusan`)
-
-#### 3. Lihat Detail Mahasiswa
-
--   `GET /students/{id}`
-
-#### 4. Edit Mahasiswa
-
--   `PUT /students/{id}` (gunakan POST + `_method=PUT` saat pakai Postman)
-
-#### 5. Hapus Mahasiswa
-
--   # `DELETE /students/{id}` (gunakan POST + `_method=DELETE` saat pakai Postman)
 -   **Method:** `POST`
 -   **Endpoint:** `/auth/login`
 -   **Body (form-data):** `email`, `password`
@@ -172,4 +134,3 @@ http://127.0.0.1:8000/api
 #### 5. Hapus Mahasiswa
 
 -   `DELETE /students/{id}` (gunakan POST + `_method=DELETE` saat pakai Postman)
-    > > > > > > > 563720094a3bea6afcc97b8a19cfc29e1454c3b9
