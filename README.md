@@ -4,12 +4,12 @@ Project ini merupakan RESTful API sederhana yang dibuat untuk memenuhi tugas UAS
 
 ## 🔗 Daftar Isi
 
--   [Anggota Kelompok](#anggota-kelompok)
--   [Tujuan Project](#tujuan-project)
--   [Fitur-Fitur](#fitur-fitur)
--   [Kebutuhan Sistem](#kebutuhan-sistem)
--   [Cara Setup Project](#cara-setup-project)
--   [Daftar Endpoint API](#daftar-endpoint-api)
+-   [Anggota Kelompok](#-anggota-kelompok)
+-   [Tujuan Project](#-tujuan-project)
+-   [Fitur-Fitur](#-fitur-fitur)
+-   [Kebutuhan Sistem](#-kebutuhan-sistem)
+-   [Cara Setup Project](#-cara-setup-project)
+-   [Daftar Endpoint API](#-daftar-endpoint-api)
 
 ## 👥 Anggota Kelompok
 
