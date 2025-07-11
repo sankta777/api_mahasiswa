@@ -1,101 +1,107 @@
-# 📚 REST API Data Mahasiswa - UAS Back-end Web Development
+# REST API Data Mahasiswa - UAS Back-end Web Development
 
 Project ini merupakan RESTful API sederhana yang dibuat untuk memenuhi tugas UAS mata kuliah Back-end Web Development.
 
-## 🔗 Daftar Isi
+## Daftar Isi
 
--   [Anggota Kelompok](#-anggota-kelompok)
--   [Tujuan Project](#-tujuan-project)
--   [Fitur-Fitur](#-fitur-fitur)
--   [Kebutuhan Sistem](#-kebutuhan-sistem)
--   [Cara Setup Project](#-cara-setup-project)
--   [Daftar Endpoint API](#-daftar-endpoint-api)
+- [Anggota Kelompok](#anggota-kelompok)  
+- [Tujuan Project](#tujuan-project)  
+- [Fitur-Fitur](#fitur-fitur)  
+- [Kebutuhan Sistem](#kebutuhan-sistem)  
+- [Cara Setup Project](#cara-setup-project)  
+- [API Endpoint List & Panduan Tes](#api-endpoint-list--panduan-tes)  
 
-## 👥 Anggota Kelompok
+## Anggota Kelompok
 
--   Revaldo Santosa (230040023)
--   Made Nico Bramantya Putra Wijaya (230040094)
--   Ida Bagus Gede Upadana Manuaba (230040121)
--   Ida Bagus Putu Gede Rama Pradnyana (230040175)
+- Revaldo Santosa (230040023)  
+- Made Nico Bramantya Putra Wijaya (230040094)  
+- Ida Bagus Gede Upadana Manuaba (230040121)  
+- Ida Bagus Putu Gede Rama Pradnyana (230040175)
 
-## 🎯 Tujuan Project
+## Tujuan Project
 
-Menyediakan layanan **back-end** untuk mengelola data mahasiswa yang mendukung fitur:
+Menyediakan layanan **back-end** untuk mengelola data mahasiswa dengan fitur:
 
--   Autentikasi dengan token (JWT/Sanctum)
--   Operasi data mahasiswa (Create, Read, Update, Delete)
+- Autentikasi menggunakan token (JWT/Sanctum)  
+- Operasi CRUD (Create, Read, Update, Delete) data mahasiswa  
 
-## 🚀 Fitur-Fitur
+## Fitur-Fitur
 
-✅ Autentikasi user menggunakan token  
-✅ CRUD lengkap untuk data mahasiswa  
-✅ Akun superadmin otomatis tersedia saat database di-import  
-✅ Dibuat dengan **PHP** & **Laravel**
+- Autentikasi user menggunakan token  
+- CRUD lengkap untuk data mahasiswa  
+- Akun superadmin otomatis tersedia setelah database di-import  
+- Dibuat menggunakan **PHP** dan **Laravel**
 
-## 🛠️ Kebutuhan Sistem
+## Kebutuhan Sistem
 
--   PHP (v8.1+)
--   Composer
--   MySQL atau MariaDB
--   [Postman](https://www.postman.com/) (untuk testing endpoint)
--   [Laragon](https://laragon.org/) (rekomendasi)
+- PHP (versi 8.1+)  
+- Composer  
+- MySQL atau MariaDB  
+- [Postman](https://www.postman.com/) untuk testing endpoint  
+- [Laragon](https://laragon.org/) (rekomendasi)
 
-## ⚙️ Cara Setup Project
+## Cara Setup Project
 
-### 1. Clone Repositori
+__Panduan ini disusun khusus untuk pengguna **Laragon**.__
 
-```bash
-git clone https://github.com/sankta777/api_mahasiswa.git
-```
+### 1. Nyalakan Laragon dan Clone Repository
 
-### 2. Masuk ke Folder (change directory)
+  - Buka **Laragon**, lalu klik tombol **Start All**  
+  - Klik tombol **Terminal**, maka terminal akan terbuka di directory `C:\laragon\www`  
+  - Jalankan perintah berikut untuk clone repository project:
+    ```bash
+    git clone https://github.com/sankta777/api_mahasiswa.git
 
-```bash
-cd api_mahasiswa
-```
+### 2. Buat Database
 
-### 3. Install Library Laravel
+  - Klik tombol **Database** di Laragon untuk membuka phpMyAdmin  
+  - Buat database baru dengan nama `api_mahasiswa`  
+  - Pilih database tersebut, lalu masuk ke tab **Import**  
+  - Klik **Choose File** dan pilih file `database.sql` dari folder project  
+  - Scroll ke bawah dan klik tombol **Import**
 
-```bash
-composer install
-```
+### 3. Install & Config Project
 
-### 4. Siapkan Database
+  Di terminal Laragon, masuk ke directory project dengan **`cd`** atau change directory
 
--   Buat database baru dengan nama `api_mahasiswa` di phpMyAdmin.
--   Import file `database.sql` dari repositori ke database tersebut.
+  ```bash
+  cd api_mahasiswa
+  ```
 
-### 5. Konfigurasi .env
+  Install semua library yang dibutuhkan Laravel.
 
-```bash
-cp .env.example .env
-```
+  ```bash
+  composer install
+  ```
 
-Edit file `.env`:
+  Buat file `.env` dan generate unique encryption key untuk aplikasi:
 
-```
-DB_DATABASE=api_mahasiswa
-DB_USERNAME=root
-DB_PASSWORD=
-```
+  ```bash
+  cp .env.example .env
+  php artisan key:generate
+  ```
 
-### 6. Generate Application Key
+  > Tidak perlu mengubah file `.env` karena konfigurasi database default Laragon sudah sesuai.
 
-```bash
-php artisan key:generate
-```
+### 4. Jalankan Server Laravel
 
-### 7. Jalankan Server Laravel
+  Pastikan masih berada di directory `api_mahasiswa`, lalu jalankan:
 
-```bash
-php artisan serve
-```
+  ```bash
+  php artisan serve
+  ```
 
-> Akses API: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+  Jika berhasil, akan muncul informasi seperti:
 
-## 🔐 Daftar Endpoint API
+  ```
+  Server running on http://127.0.0.1:8000
+  ```
 
-### URL Dasar
+  Biarkan terminal tetap terbuka selama proses testing API.
+
+## API Endpoint List & Panduan Tes
+
+Gunakan **Postman** dengan base URL:
 
 ```
 http://127.0.0.1:8000/api
@@ -103,39 +109,63 @@ http://127.0.0.1:8000/api
 
 ### Autentikasi
 
-#### 1. Login
+  #### Langkah 1: Login untuk Mendapatkan Token
 
--   **Method:** `POST`
--   **Endpoint:** `/auth/login`
--   **Body (form-data):** `email`, `password`
--   **Contoh:** `admin@example.com / password`
+  Langkah ini harus dilakukan terlebih dahulu untuk mendapatkan access token.
 
-#### 2. Cek Info User
+  - **Method:** `POST`  
+  - **Endpoint:** `/auth/login`  
+  - **Body** (`form-data`):
+    - `email`: `admin@example.com`
+    - `password`: `password`
 
--   **Method:** `GET`
--   **Endpoint:** `/auth/me`
--   **Auth:** Wajib pakai Bearer Token
+  Jika berhasil, copy value `access_token` dari response JSON yang muncul.
+
+  #### Langkah 2: Cek Info User
+
+  Tes ini dilakukan untuk memastikan token valid.
+
+  - **Method:** `GET`  
+  - **Endpoint:** `/auth/me`  
+  - **Authorization:** Di tab **Authorization**, pilih `Bearer Token`, lalu paste token yang sudah dicopy.
 
 ### Mahasiswa (Students)
 
-> Semua endpoint berikut memerlukan Bearer Token
+> Semua endpoint berikut memerlukan Bearer Token di tab Authorization.
 
-#### 1. Lihat Semua Mahasiswa
+  #### 1. Lihat Semua Mahasiswa (Read)
 
--   `GET /students`
+  - **Method:** `GET`  
+  - **Endpoint:** `/students`
 
-#### 2. Tambah Mahasiswa
+  #### 2. Tambah Mahasiswa (Create)
 
--   `POST /students` (form-data: `nim`, `nama`, `jurusan`)
+  - **Method:** `POST`  
+  - **Endpoint:** `/students`  
+  - **Body** (`form-data`): isi `nim`, `nama`, dan `jurusan`
 
-#### 3. Lihat Detail Mahasiswa
+  #### 3. Lihat Detail Mahasiswa (Read)
 
--   `GET /students/{id}`
+  - **Method:** `GET`  
+  - **Endpoint:** `/students/{id}`  
+    *(ganti `{id}` dengan ID mahasiswa, contoh: `/students/1`)*
 
-#### 4. Edit Mahasiswa
+  #### 4. Edit Mahasiswa (Update)
 
--   `PUT /students/{id}` (gunakan POST + `_method=PUT` saat pakai Postman)
+  - **Method:** `PUT`  
+  - **Endpoint:** `/students/{id}`
 
-#### 5. Hapus Mahasiswa
+    ##### Cara tes di Postman:
+    - Gunakan method `POST` ke endpoint di atas  
+    - Di Body (`form-data`), isi `nim`, `nama`, dan `jurusan` yang baru  
+    - Tambahkan field `_method` dengan value `PUT`
 
--   `DELETE /students/{id}` (gunakan POST + `_method=DELETE` saat pakai Postman)
+  #### 5. Hapus Mahasiswa (Delete)
+
+  - **Method:** `DELETE`  
+  - **Endpoint:** `/students/{id}`
+
+    ##### Cara tes di Postman:
+    - Gunakan method `POST` ke endpoint di atas  
+    - Di Body (`form-data`) 
+    - Tambahkan field `_method` dengan value `DELETE`
